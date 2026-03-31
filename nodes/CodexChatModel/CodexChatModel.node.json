@@ -1,0 +1,18 @@
+{
+  "node": "n8n-nodes-codex.codexChatModel",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["AI", "Language Models"],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://github.com/petretiandrea/n8n-nodes-codex#authentication"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://github.com/petretiandrea/n8n-nodes-codex"
+      }
+    ]
+  }
+}

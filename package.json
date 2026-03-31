@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-codex",
+  "version": "0.1.0",
+  "description": "n8n community node for OpenAI Codex via ChatGPT subscription device-code auth",
+  "license": "MIT",
+  "homepage": "https://github.com/petretiandrea/n8n-nodes-codex",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "codex",
+    "openai"
+  ],
+  "author": {
+    "name": "Andrea Petreti"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petretiandrea/n8n-nodes-codex.git"
+  },
+  "bin": {
+    "codex-device-login": "./scripts/device-code-bootstrap.mjs"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "prepublishOnly": "n8n-node prerelease",
+    "release": "n8n-node release",
+    "test": "vitest run"
+  },
+  "files": [
+    "dist",
+    "scripts/device-code-bootstrap.mjs"
+  ],
+  "dependencies": {
+    "@n8n/ai-node-sdk": "0.4.1",
+    "n8n-workflow": "2.13.1"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "aiNodeSdkVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/CodexDeviceAuth.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/CodexChatModel/CodexChatModel.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.11.0",
+    "@types/node": "^24.5.2",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
