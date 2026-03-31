@@ -16,5 +16,5 @@ services:
       TZ: Europe/Rome
     volumes:
       - ./.n8n:/home/node/.n8n
-      - ./n8n-nodes-codex:/home/node/.n8n/custom/node_modules/n8n-nodes-codex
+      - ./:/home/node/.n8n/custom/node_modules/n8n-nodes-codex
     restart: unless-stopped

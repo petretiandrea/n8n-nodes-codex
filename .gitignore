@@ -2,3 +2,5 @@ dist
 node_modules
 coverage
 *.tgz
+.n8n/*
+!.n8n/.gitignore

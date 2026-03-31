@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { buildCodexRequestBody, CodexClient } from '../../lib/transport/codexClient';
+import type { FetchLike } from '../../lib/types/codex';
 
 describe('codexClient', () => {
 	it('builds a text generation request body', () => {
@@ -24,7 +25,7 @@ describe('codexClient', () => {
 
 	it('aggregates text from a streaming response for generate()', async () => {
 		const encoder = new TextEncoder();
-		const fetchImpl = vi.fn().mockResolvedValue({
+		const fetchImpl: FetchLike = vi.fn().mockResolvedValue({
 			ok: true,
 			body: new ReadableStream({
 				start(controller) {
@@ -41,9 +42,9 @@ describe('codexClient', () => {
 					controller.close();
 				},
 			}),
-		});
+		} as Response);
 
-		const client = new CodexClient(fetchImpl as any);
+		const client = new CodexClient(fetchImpl);
 		const result = await client.generate('token', 'acct_123', {
 			model: 'gpt-5.3-codex',
 			input: [

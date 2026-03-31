@@ -81,7 +81,7 @@ export async function searchModels(
 			refreshToken: string;
 			accountId?: string;
 			expiresAt: string;
-		}>('codexDeviceAuth');
+		}>('codexDeviceAuthApi');
 
 		const tokenBundle = normalizeTokenBundle({
 			accessToken: credentials.accessToken,

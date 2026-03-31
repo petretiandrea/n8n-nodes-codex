@@ -7,7 +7,7 @@ describe('CodexChatModel node', () => {
 		const node = new CodexChatModel();
 
 		expect(node.description.displayName).toBe('Codex Chat Model');
-		expect(node.description.credentials?.[0]?.name).toBe('codexDeviceAuth');
+		expect(node.description.credentials?.[0]?.name).toBe('codexDeviceAuthApi');
 		expect(node.description.outputNames).toEqual(['Model']);
 	});
 });

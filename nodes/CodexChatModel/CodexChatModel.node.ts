@@ -50,7 +50,7 @@ export class CodexChatModel implements INodeType {
 		outputNames: ['Model'],
 		credentials: [
 			{
-				name: 'codexDeviceAuth',
+				name: 'codexDeviceAuthApi',
 				required: true,
 			},
 		],
@@ -63,7 +63,7 @@ export class CodexChatModel implements INodeType {
 					searchListMethod: 'searchModels',
 					searchable: true,
 				},
-				default: 'gpt-5.3-codex',
+				default: '',
 				description: 'Codex model ID to call. The list is loaded dynamically when possible.',
 			},
 			{
@@ -104,8 +104,9 @@ export class CodexChatModel implements INodeType {
 	};
 
 	async supplyData(this: ISupplyDataFunctions, itemIndex: number) {
-		const credentials = await this.getCredentials('codexDeviceAuth');
-		const modelName = this.getNodeParameter('model', itemIndex) as string;
+		const credentials = await this.getCredentials('codexDeviceAuthApi');
+		const selectedModel = this.getNodeParameter('model', itemIndex) as string;
+		const modelName = selectedModel || 'gpt-5.3-codex';
 		const options = this.getNodeParameter('options', itemIndex, {}) as ModelOptions;
 		let tokenBundle = normalizeTokenBundle({
 			accessToken: credentials.accessToken as string,
